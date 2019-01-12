@@ -69,7 +69,8 @@
             <input type="password" id="contraseña" class="" required/> <label id="errorContraseña" style="display:none"> Introduce una contraseña válida.</label><br>
             <label for="">Repetir contraseña<span style="color:red;">*</span></label>
             <input type="password" id="contraseña1" class="" required/> <label id="errorContraseñas" style="display:none"> Las contraseñas no coinciden.</label><br>
-            <input type="button"  id="registrar" value="Registrar"><br>
+            <input type="button"  id="registrar" value="Registrar">
+            <button> <a style="text-decoration:none" href="./login.html">Login</a></button>
             <label for="" id="resultado"></label>
 
         </form>
@@ -270,6 +271,7 @@
     var campoContraseña = document.getElementById("contraseña");campoContraseña.addEventListener("keyup",eventoCambio);
     var campoContraseña1 = document.getElementById("contraseña1");campoContraseña1.addEventListener("keyup",eventoCambio);
     var campoEnviar = document.getElementById("registrar"); campoEnviar.addEventListener("click",comprobarCampos);
+    
     
 
 

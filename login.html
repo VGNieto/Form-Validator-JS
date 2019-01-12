@@ -20,6 +20,7 @@
             <input type="password" name="pass" id="password"><br><br>
             <a href="./form.html">Registrarse</a>
             <input type="button" name="enter" value="Acceder" id="login">
+            <label for="" id="error" style="display:none">El usuario o la contraseña no son válidos.</label>
             <label for="" id="cerrada" style="display:none">La sesión se cerró correctamente.</label>
         </form>
     </div>
@@ -34,12 +35,15 @@
 
         function acceder(){
 
+        document.getElementById("cerrada").style.display = "none";
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         
         if(readCookie(username,password) == true){
             document.cookie = "login="+username;
             window.location.replace("http://localhost/FormularioPufoSA/menu.html");
+        } else{
+            document.getElementById("error").style.display = "";
         }
             
         }
@@ -48,7 +52,7 @@
 
             var valido = false;
             var cookies = document.cookie;
-            var arrayCookies = document.cookie.split(";");
+            var arrayCookies = document.cookie.split("; ");
             var claveValor = [];
             arrayCookies.forEach(element => {
                 claveValor.push(element.split("="));

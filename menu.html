@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+</head>
+<body>
+    <p>Hola amigo</p>
+    <button id="borrar"> Cerrar sesión. </button>
+    <script>
+        
+        function borrarCookie() {
+            var d = new Date(); 
+            d.setTime(d.getTime() - (1000*60*60*24)); 
+            var fecha = "expires=" + d.toGMTString(); 
+            window.document.cookie = "login"+"="+"; "+fecha;
+            window.location.replace("http://localhost/FormularioPufoSA/login.html");
+
+        }
+        document.getElementById("borrar").addEventListener("click",borrarCookie);
+    
+    </script>
+</body>
+</html>

@@ -27,7 +27,7 @@
 
     <script>
 
-        if(document.referrer =="http://localhost/FormularioPufoSA/menu.html"){
+        if(document.referrer != ""){
             document.getElementById("cerrada").style.display = "";
         }
 
@@ -41,7 +41,7 @@
         
         if(readCookie(username,password) == true){
             document.cookie = "login="+username;
-            window.location.replace("http://localhost/FormularioPufoSA/menu.html");
+            window.location.href = "./menu.html";
         } else{
             document.getElementById("error").style.display = "";
         }

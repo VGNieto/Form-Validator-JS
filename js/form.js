@@ -173,7 +173,7 @@ function comprobarCampos() {
     
     if (fallos == 0) {
         document.getElementById("resultado").textContent = "Usuario creado correctamente.";
-        document.cookie = campoUsuario.value + "=" + campoContraseña.value;
+        document.cookie = campoUsuario.value + "=" + campoContraseña.value+";expires=Fri, 31 Dec 9999 23:59:59 GMT";
 
     }
 

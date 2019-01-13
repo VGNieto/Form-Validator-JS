@@ -16,4 +16,8 @@ de ello.
 Dentro del menú simplemente podemos ver nuestro usuario y un botón de cerrar sesión, que borrará la cookie de sesión creada y nos enviará al login
 de nuevo.
 
+
+![Screenshot](readme/registrook.png)
+![Screenshot](readme/registronook.png)
+![Screenshot](readme/loginmal.png)
 ![Screenshot](readme/logindone.png)

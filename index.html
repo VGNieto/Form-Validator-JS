@@ -4,70 +4,27 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+
 </head>
 
 <body>
 
+    <form>
+        <h2> INICIO DE SESIÓN PUFO S.A</h2>
+        <label for=""> Usuario</label>
+        <input type=text name="user" id="username">
+        <label for=""> Contraseña</label>
+        <input type="password" name="pass" id="password"><br><br>
+        <a href="./form.html">Registrarse</a>
+        <input type="button" name="enter" value="Acceder" id="login">
+        <label for="" id="error" style="display:none"> El usuario o la contraseña no son válidos.</label>
+    </form>
 
-    <div class="formulario">
-        <form>
-            
-            <p> Usuario </p>
-            <input type=text name="user" id="username">
-            <p> Contraseña </p>
-            <input type="password" name="pass" id="password"><br><br>
-            <a href="./form.html">Registrarse</a>
-            <input type="button" name="enter" value="Acceder" id="login">
-            <label for="" id="error" style="display:none">El usuario o la contraseña no son válidos.</label>
-            <label for="" id="cerrada" style="display:none">La sesión se cerró correctamente.</label>
-        </form>
-    </div>
-
-    <script>
-
-        if(document.referrer != ""){
-            document.getElementById("cerrada").style.display = "";
-        }
-
-        document.getElementById("login").addEventListener("click",acceder);
-
-        function acceder(){
-
-        document.getElementById("cerrada").style.display = "none";
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        
-        if(readCookie(username,password) == true){
-            document.cookie = "login="+username;
-            window.location.href = "./menu.html";
-        } else{
-            document.getElementById("error").style.display = "";
-        }
-            
-        }
-
-        function readCookie(name,password){
-
-            var valido = false;
-            var cookies = document.cookie;
-            var arrayCookies = document.cookie.split("; ");
-            var claveValor = [];
-            arrayCookies.forEach(element => {
-                claveValor.push(element.split("="));
-            });
-            
-           for(let i = 0; i<claveValor.length;i++){
-               if(claveValor[i][0] == name && claveValor[i][1] == password){
-                   valido = true;
-               }
-           }
-            return valido;
-        }
-        
-    </script>
-
+    <script src="./js/index.js"></script>
 
 
 

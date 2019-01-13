@@ -2,38 +2,18 @@
 <html lang="en">
     <head>
     <meta charset = "utf-8">
+    <title>Registro empleados</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <style>
-        *{
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .error {
-            border: 2px solid red;
-            
-        }
-       
-        textarea {
-            width: 350px;
-            height: 200px;
-            color: red;
-            border: none;
-            background-color: transparent;
-            resize: none;
-            outline: none;
-        }
-       
-        input{
-            width: 200px;
-        }
-        select{
-            width:200px;
-        }
-    
-
+    .error {
+        border: 2px solid red;
+        
+    }
     </style>
     </head>
     <body>
         <form id="myForm">
-            
+            <h2>Registro de nuevo empleado</h2>
             <label for="">Los campos marcados con <span style="color:red;">*</span> serán obligatorios.</label><br>
             <label for="">Nombre<span style="color:red;">*</span></label>
             <input type="text" id="nombre" class="" required/><label id="errorNombre" style="display:none"> Introduce un nombre válido.</label><br>
@@ -44,19 +24,27 @@
             <label for="">Trabajo<span style="color:red;">*</span></label>
             <select id="trabajo">
                     <option value="elegirUno">Elegir uno...</option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                    <option value="Secretario">Secretario</option>
+                    <option value="Staff">Staff</option>
+                    <option value="Analyst">Analyst</option>
+                    <option value="Vendedor">Vendedor</option>
+                    <option value="Manager">Manager</option>
+                    <option value="President">President</option>
+
             </select>
             <label id="errorTrabajo" style="display:none"> Elige un trabajo válido.</label><br>
             <label for="">Jefe<span style="color:red;">*</span></label>
             <select id="jefe">
                     <option value="elegirUno">Elegir uno...</option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                    <option value="JuanSmith">Juan Smith</option>
+                    <option value="KevinAllen">Kevin Allen</option>
+                    <option value="JeanDoyle">Jean Doyle</option>
+                    <option value="LeslieBaker">Leslie Baker</option>
+                    <option value="TerryJones">TerryJones</option>
+                    <option value="SarahDuncan">Sarah Duncan</option>
+                    <option value="KarenShaw">Karen Shaw</option>
+                    <option value="DanielPeter">Daniel Peter</option>
+                    <option value="CynthiaWard">CynthiaWard</option>
             </select>
             <label id="errorJefe" style="display:none"> Elige un jefe válido.</label><br>
             <label for="">Fecha del contrato<span style="color:red;">*</span></label>
@@ -70,213 +58,14 @@
             <label for="">Repetir contraseña<span style="color:red;">*</span></label>
             <input type="password" id="contraseña1" class="" required/> <label id="errorContraseñas" style="display:none"> Las contraseñas no coinciden.</label><br>
             <input type="button"  id="registrar" value="Registrar">
-            <button> <a style="text-decoration:none" href="./login.html">Login</a></button>
+            <button> <a style="text-decoration:none" href="./index.html">Login</a></button>
             <label for="" id="resultado"></label>
 
         </form>
         
 
         
-    <script>
-
-    var nombre = new RegExp("^[a-zA-Z][a-zA-Z]{1,10}$");
-    var apellidos = new RegExp("^[a-zA-Z][a-zA-Z]{1,10}$");
-    var usuario = new RegExp("^[a-zA-Z][a-zA-Z]+@pufo\.es$");
-    var telefono = new RegExp("^[6|7]+[0-9]{8}$");
-    var contraseña = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?¿!@$%^&*-]).{8,}$");
-
-
-    var correctos = {"errorContraseñas":false,"errorContraseña":false,"errorSalario":false,"errorTelefono":false,"errorFecha":false,"errorJefe":false,
-                    "errorTrabajo":false,"errorUsuario":false,"errorApellido":false,"errorNombre":false};
-    
-    
-    function eventoCambio() {
-
-      switch(this.id){
-            case "nombre": if(!nombre.test(this.value)){
-                            this.className = "error";
-                            document.getElementById("errorNombre").style.display="";
-                            correctos["errorNombre"] = false;
-                        } else{
-                            this.className = "";
-                            document.getElementById("errorNombre").style.display="none";
-                            correctos["errorNombre"] = true;
-
-                        }
-                        break;
-            case "apellidos" : if(!apellidos.test(this.value)){
-                                this.className = "error";
-                                document.getElementById("errorApellido").style.display="";
-                                correctos["errorApellido"] = false;
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorApellido").style.display="none";
-                                correctos["errorApellido"] = true;
-
-                            }
-                            break;
-            case "usuario" : if(!usuario.test(this.value)){
-                                this.className = "error";
-                                document.getElementById("errorUsuario").style.display="";
-                                correctos["errorUsuario"] = false;
-                                
-
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorUsuario").style.display="none";
-                                correctos["errorUsuario"] = true;
-
-                            }
-                            break;
-            case "trabajo" : if(this.value == "elegirUno" ){
-                                this.className = "error";
-                                document.getElementById("errorTrabajo").style.display="";
-                                correctos["errorTrabajo"] = false;
-
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorTrabajo").style.display="none";
-                                correctos["errorTrabajo"] = true;
-
-                            }
-                            break;
-            case "jefe" : if(this.value == "elegirUno" ){
-                                this.className = "error";
-                                document.getElementById("errorJefe").style.display="";
-                                correctos["errorJefe"] = false;
-
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorJefe").style.display="none";
-                                correctos["errorJefe"] = true;
-
-                            }
-                            break;
-            case "fechacontrato" : 
-                            var fechaActual = new Date();
-                            var tonto = fechaActual.getTime();
-                            console.log(tonto);
-                            if(this.valueAsNumber < 946684800000 || this.valueAsNumber > tonto ){
-                                this.className = "error";
-                                document.getElementById("errorFecha").style.display="";
-                                correctos["errorFecha"] = false;
-
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorFecha").style.display="none";
-                                correctos["errorFecha"] = true;
-
-                            }
-
-                            break;
-            case "telefono" : if(this.value == ""){
-                                this.className = "";
-                                document.getElementById("errorTelefono").style.display="none";
-                                correctos["telefono"] = true;
-                            } else if(!telefono.test(this.value)){
-                                this.className = "error";
-                                document.getElementById("errorTelefono").style.display="";
-                                correctos["errorTelefono"] = false;
-
-                            
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorTelefono").style.display="none";
-                                correctos["errorTelefono"] = true;
-
-                            }
-                            break;
-            case "salario" : if(this.value < 858.55 || this.value > 12000 ){
-                                this.className = "error";
-                                document.getElementById("errorSalario").style.display="";
-                                correctos["errorSalario"] = false;
-
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorSalario").style.display="none";
-                                correctos["errorSalario"] = true;
-
-                            }
-                            break;
-            case "contraseña" : if(!contraseña.test(this.value) ){
-                                this.className = "error";
-                                document.getElementById("errorContraseña").style.display="";
-                                correctos["errorContraseña"] = false;
-
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorContraseña").style.display="none";
-                                correctos["errorContraseña"] = true;
-
-                            }
-                            break;
-            case "contraseña1" : if(this.value !== document.getElementById("contraseña").value){
-                                this.className = "error";
-                                document.getElementById("errorContraseñas").style.display="";
-                                correctos["errorContraseñas"] = false;
-
-                            } else{
-                                this.className = "";
-                                document.getElementById("errorContraseñas").style.display="none";
-                                correctos["errorContraseñas"] = true;
-
-                            }
-                            break;
-      }
-        
-       
-    }
-
-
-    function comprobarCampos(){
-       
-        
-        let fallos = 0;
-        for (const key in correctos) {
-            if (correctos.hasOwnProperty(key)) {
-                const element = correctos[key];
-                if(element !== true){
-                    if(key == "errorTelefono"){
-                        if(campoTelefono.value !== ""){
-                            fallos++;
-                        } else{
-                            document.getElementById(key).style.display ="none";
-
-                        }
-                    } else{
-                        fallos++;
-                    document.getElementById(key).style.display ="";
-                    }
-                } 
-            }
-        }
-        console.log(fallos);
-        if(fallos == 0){
-            document.getElementById("resultado").textContent ="Usuario creado correctamente.";
-            document.cookie = campoUsuario.value+"="+campoContraseña.value;
-            
-        }
-        
-        
-    }
-
-    var campoNombre = document.getElementById("nombre");campoNombre.addEventListener("keyup",eventoCambio);
-    var campoApellidos = document.getElementById("apellidos");campoApellidos.addEventListener("keyup",eventoCambio);
-    var campoUsuario = document.getElementById("usuario");campoUsuario.addEventListener("keyup",eventoCambio);
-    var campoTrabajo = document.getElementById("trabajo");campoTrabajo.addEventListener("change",eventoCambio);
-    var campoJefe = document.getElementById("jefe");campoJefe.addEventListener("change",eventoCambio);
-    var campoFechaContrato = document.getElementById("fechacontrato");campoFechaContrato.addEventListener("change",eventoCambio);
-    var campoTelefono = document.getElementById("telefono"); campoTelefono.addEventListener("keyup",eventoCambio);
-    var campoSalario = document.getElementById("salario");campoSalario.addEventListener("keyup",eventoCambio);
-    var campoContraseña = document.getElementById("contraseña");campoContraseña.addEventListener("keyup",eventoCambio);
-    var campoContraseña1 = document.getElementById("contraseña1");campoContraseña1.addEventListener("keyup",eventoCambio);
-    var campoEnviar = document.getElementById("registrar"); campoEnviar.addEventListener("click",comprobarCampos);
-    
-    
-
-
-
-    </script>
+    <script src="./js/form.js"></script>
 
     </body>
 </html>
